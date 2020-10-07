@@ -1,0 +1,11 @@
+# Bytecode
+__pycache__
+*.pyc
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+.iml

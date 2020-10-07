@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  pipeline:
+    build: .
+    environment:
+      - FILE_PATH=/code/shakespeare.txt
+      - DATABASE_HOST=postgresql
+      - DATABASE_PORT=5432
+      - DATABASE_USER=docker
+      - DATABASE_PASSWORD=docker
+      - DATABASE_NAME=valore
+  postgresql:
+    image: postgres
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=valore
+    volumes:
+      - ./data/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    restart: always
